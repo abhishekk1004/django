@@ -1,0 +1,43 @@
+Collecting django
+  Downloading django-5.2.6-py3-none-any.whl.metadata (4.1 kB)
+Collecting pandas
+  Downloading pandas-2.3.2-cp313-cp313-win_amd64.whl.metadata (19 kB)
+Collecting openpyxl
+  Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting djangorestframework
+  Downloading djangorestframework-3.16.1-py3-none-any.whl.metadata (11 kB)
+Collecting asgiref>=3.8.1 (from django)
+  Downloading asgiref-3.9.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting sqlparse>=0.3.1 (from django)
+  Downloading sqlparse-0.5.3-py3-none-any.whl.metadata (3.9 kB)
+Collecting tzdata (from django)
+  Using cached tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting numpy>=1.26.0 (from pandas)
+  Downloading numpy-2.3.3-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting python-dateutil>=2.8.2 (from pandas)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas)
+  Using cached pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting et-xmlfile (from openpyxl)
+  Downloading et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading django-5.2.6-py3-none-any.whl (8.3 MB)
+   ---------------------------------------- 8.3/8.3 MB 5.4 MB/s  0:00:01
+Downloading pandas-2.3.2-cp313-cp313-win_amd64.whl (11.0 MB)
+   ---------------------------------------- 11.0/11.0 MB 5.5 MB/s  0:00:01
+Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+Downloading djangorestframework-3.16.1-py3-none-any.whl (1.1 MB)
+   ---------------------------------------- 1.1/1.1 MB 3.7 MB/s  0:00:00
+Downloading asgiref-3.9.1-py3-none-any.whl (23 kB)
+Downloading numpy-2.3.3-cp313-cp313-win_amd64.whl (12.8 MB)
+   ---------------------------------------- 12.8/12.8 MB 5.2 MB/s  0:00:02
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading sqlparse-0.5.3-py3-none-any.whl (44 kB)
+Using cached tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+Installing collected packages: pytz, tzdata, sqlparse, six, numpy, et-xmlfile, asgiref, python-dateutil, openpyxl, django, pandas, djangorestframework
+
+Successfully installed asgiref-3.9.1 django-5.2.6 djangorestframework-3.16.1 et-xmlfile-2.0.0 numpy-2.3.3 openpyxl-3.1.5 pandas-2.3.2 python-dateutil-2.9.0.post0 pytz-2025.2 six-1.17.0 sqlparse-0.5.3 tzdata-2025.2
