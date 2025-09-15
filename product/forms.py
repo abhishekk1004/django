@@ -1,5 +1,5 @@
 from django import forms
 
-class ProductUploadForm(forms.Form):
+class UploadFileForm(forms.Form):
     file = forms.FileField(help_text="Upload CSV or Excel (.xlsx) file")
     
