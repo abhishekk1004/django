@@ -40,7 +40,7 @@ def upload_file(request):
             filename = fs.save(uploaded_file.name, uploaded_file)
             file_path = os.path.join(settings.MEDIA_ROOT, filename)
             try:
-                # Check file extension before reading
+                
                 ext = uploaded_file.name.lower().split('.')[-1]
                 if ext not in ['csv', 'xls', 'xlsx']:
                     messages.error(request, "File format should be CSV or Excel type.")
