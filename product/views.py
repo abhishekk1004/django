@@ -1,5 +1,4 @@
-def home(request):
-    return render(request, 'products/home.html')
+
 import os
 import pandas as pd
 
@@ -10,8 +9,12 @@ from django.contrib import messages
 from .forms import UploadFileForm
 from .models import Product
 
-REQUIRED_COLUMNS = {'sku', 'title', 'price'}  
+REQUIRED_COLUMNS = {'sku', 'name', 'price'}  
 
+
+
+def home(request):
+    return render(request, 'products/home.html')
 def _read_file(file_path):
     lower = file_path.lower()
     if lower.endswith('.csv'):
@@ -37,8 +40,14 @@ def upload_file(request):
             filename = fs.save(uploaded_file.name, uploaded_file)
             file_path = os.path.join(settings.MEDIA_ROOT, filename)
             try:
+                # Check file extension before reading
+                ext = uploaded_file.name.lower().split('.')[-1]
+                if ext not in ['csv', 'xls', 'xlsx']:
+                    messages.error(request, "File format should be CSV or Excel type.")
+                    fs.delete(filename)
+                    return render(request, 'products/upload.html', {'form': form})
+
                 df = _read_file(file_path)
-                
                 df.columns = [c.strip().lower() for c in df.columns]
                 _validate_columns(df)
 
@@ -47,28 +56,26 @@ def upload_file(request):
                 skipped = 0
 
                 for _, row in df.iterrows():
-                   
                     sku = str(row.get('sku', '')).strip()
-                    title = str(row.get('title', '')).strip()
-                    if not sku or not title:
+                    name = str(row.get('name', '')).strip()
+                    if not sku or not name:
                         skipped += 1
                         continue
-                    # parse numeric fields safely
                     try:
                         price = float(row.get('price', 0)) if not pd.isna(row.get('price')) else 0.0
                     except Exception:
                         price = 0.0
                     try:
-                        stock = int(row.get('stock', 0)) if not pd.isna(row.get('stock')) else 0
+                        quantity = int(row.get('quantity', 0)) if not pd.isna(row.get('quantity')) else 0
                     except Exception:
-                        stock = 0
+                        quantity = 0
 
                     defaults = {
-                        'title': title,
+                        'name': name,
                         'description': str(row.get('description', '') or ''),
                         'category': str(row.get('category', '') or ''),
                         'price': price,
-                        'stock': stock,
+                        'quantity': quantity,
                     }
 
                     obj, created_flag = Product.objects.update_or_create(sku=sku, defaults=defaults)
@@ -78,15 +85,18 @@ def upload_file(request):
                         updated += 1
 
                 messages.success(request, f'Import finished: created={created}, updated={updated}, skipped={skipped}')
-                # optionally remove file after processing
                 try:
                     fs.delete(filename)
                 except Exception:
                     pass
                 return redirect('products:upload_success')
             except Exception as e:
-                # keep uploaded file for debugging if needed
                 messages.error(request, f'Error processing file: {e}')
+                try:
+                    fs.delete(filename)
+                except Exception:
+                    pass
+                return render(request, 'products/upload.html', {'form': form})
     else:
         form = UploadFileForm()
     return render(request, 'products/upload.html', {'form': form})
