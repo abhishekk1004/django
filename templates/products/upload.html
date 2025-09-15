@@ -3,12 +3,59 @@
 {% block title %}Upload Products{% endblock %}
 
 {% block content %}
-  <h2 class="mb-4">Upload Products (CSV / Excel)</h2>
-  <p class="text-muted">Required columns: <strong>sku, title, price</strong>. Optional: description, category, stock</p>
-
-  <form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Upload and Import</button>
-  </form>
+  <style>
+    .upload-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      filter: blur(8px) brightness(1.1);
+      transition: filter 0.5s;
+    }
+    .upload-center {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+    }
+    .upload-card {
+      background: rgba(255,255,255,0.97);
+      border-radius: 1rem;
+      box-shadow: 0 8px 32px rgba(59,130,246,0.18);
+      padding: 2rem;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      z-index: 3;
+    }
+    .upload-title {
+      color: #6366f1;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    .upload-desc {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #3b82f6;
+    }
+  </style>
+  <div class="upload-bg"></div>
+  <div class="upload-center">
+    <div class="upload-card">
+      <h2 class="upload-title">Upload Products (CSV / Excel)</h2>
+      <p class="upload-desc">Required columns: <strong>sku, name, price</strong>. Optional: description, category, stock, quantity</p>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary w-100">Upload and Import</button>
+      </form>
+    </div>
+  </div>
 {% endblock %}
