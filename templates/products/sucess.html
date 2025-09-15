@@ -1,0 +1,12 @@
+{% extends "products/base.html" %}
+
+{% block title %}Upload Successful{% endblock %}
+
+{% block content %}
+  <div class="alert alert-success">
+    <h4 class="alert-heading">Success!</h4>
+    <p>Your file has been processed. Products are now available in the admin panel.</p>
+  </div>
+  <a href="{% url 'products:upload' %}" class="btn btn-secondary">Upload another file</a>
+  <a href="/admin/products/product/" class="btn btn-success">View Products in Admin</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "products/base.html" %}
+
+{% block title %}Upload Products{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Upload Products (CSV / Excel)</h2>
+  <p class="text-muted">Required columns: <strong>sku, title, price</strong>. Optional: description, category, stock</p>
+
+  <form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload and Import</button>
+  </form>
+{% endblock %}

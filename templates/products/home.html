@@ -1,0 +1,11 @@
+{% extends "products/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <div class="text-center mt-5">
+    <h1>Welcome to Product Importer</h1>
+    <p class="lead">Easily upload and manage your products from CSV/Excel files.</p>
+    <a href="{% url 'products:upload' %}" class="btn btn-primary btn-lg mt-3">Upload Products</a>
+  </div>
+{% endblock %}
