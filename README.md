@@ -24,13 +24,13 @@ Includes an interactive upload UI, robust admin management, REST API endpoints, 
 🖼️ Screenshots & References
 
 
-![Product List in Django ] (screenshot/product_sheet.png)
+![Product List in Django ] (media/screenshot/product_sheet.png)
 
 
-![Swagger API Documentation] (screenshot/swagger.png)
+![Swagger API Documentation] (media/screenshot/swagger.png)
 
 
-![Redoc API Documentation] (screenshot/redoc.png)
+![Redoc API Documentation] (media/screenshot/redoc.png)
 
 
 ![CRUD API in Postman / Swagger] 
